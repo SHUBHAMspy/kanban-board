@@ -5,7 +5,7 @@ import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 const Dropdown = ({ options, onSelect,style, context }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log(options);
   const handleSelect = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
@@ -33,23 +33,35 @@ const Dropdown = ({ options, onSelect,style, context }) => {
         </button>
       </>
       {isOpen && (
-        <div className={`${options.length > 2 ? `overflow-hidden h-36 overflow-y-auto`: `h-max`} origin-top-right absolute right-0  w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50`}>
+        <div className={`${options.length > 2 ? `overflow-hidden h-40 overflow-y-auto`: `h-max`} origin-top-left  absolute left-0 top-14  w-72 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50`}>
           <div
             className="py-1 "
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
-            {options.map((option) => (
-              <button
+            {options.map(({option,dropdownOptions,componentType}) => (
+              <div
                 key={option}
-                onClick={() => handleSelect(option)}
-                className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                // onClick={() => handleSelect(option)}
+                className="flex justify-between items-center w-full px-4 py-2 text-sm text-gray-700"
                 role="menuitem"
-                style={{ fontFamily: option }}
               >
-                {option}
-              </button>
+                <span className='text-base'>{option}</span>
+                {
+                  componentType === 'Dropdown'
+                  ? (
+                    <select value={selectedOption} onChange={handleSelect} className='border-2 py-1 pr-8 pl-2 rounded-md cursor-pointer text-base '>
+                      {
+                        dropdownOptions.map((dropdownOption) => (
+                          <option >{dropdownOption}</option>
+                        ))
+                      }
+                      
+                    </select>
+                  ): null
+                }
+              </div>
             ))}
           </div>
         </div>

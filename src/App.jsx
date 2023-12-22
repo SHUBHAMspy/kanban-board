@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Dropdown from './components/common/dropdown/Dropdown'
 import Board from './components/board/Board'
+import Navbar from './components/navbar/Navbar'
 
 
 function App() {
@@ -9,12 +9,8 @@ function App() {
   return (
     <>
       <div>
-        <section className='flex justify-between items-center bg-white h-[8vh] px-4 py-2'>
-          <nav>
-            <div>
-              <Dropdown/>
-            </div>
-          </nav>
+        <section className='bg-white h-[10vh] px-4 py-2'>
+          <Navbar/>
         </section>
         <main className='bg-[#F4F5F8] h-auto'>
           <Board/>
