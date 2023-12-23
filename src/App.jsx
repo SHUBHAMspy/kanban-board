@@ -8,8 +8,8 @@ import { categorizeAndOrderTickets } from './utils'
 import { TicketContext } from './context/ticketContext/ticketContext'
 import { ThemeContext } from './context/themeContext/themeContext'
 import { ThreeCircles } from 'react-loader-spinner'
-import { BoltIcon, CheckCircleIcon, Square3Stack3DIcon } from '@heroicons/react/24/solid'
-import { InboxIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import { BoltIcon, CheckCircleIcon, Square3Stack3DIcon, XCircleIcon } from '@heroicons/react/24/solid'
+import { InboxIcon } from '@heroicons/react/24/outline'
 
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
           {
             loading
             ? (
-              <div className='h-full w-full flex justify-center items-center'>
+              <div className='min-h-[90vh] w-full flex justify-center items-center'>
                 <span className='text-[#161B22] dark:text-white'>
                   <ThreeCircles
                     visible={true}

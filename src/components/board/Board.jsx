@@ -22,7 +22,7 @@ const Board = ({tickets,users,boardOrder}) => {
   ));
   console.log(boardOrderGrid);
   return (
-    <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 min-h-[90vh] '>
+    <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 min-h-[90vh] p-2.5 '>
       {/* {
         boardOrder.map((orderItem) => (
           <div className='flex justify-between items-center h-14 px-1'>
@@ -37,7 +37,7 @@ const Board = ({tickets,users,boardOrder}) => {
             <div className='flex justify-between items-center h-14 px-1'>
               <div className='flex justify-between items-center gap-1.5'>
                 <span>{boardOrderColumn.icon}</span>
-                <span>{boardOrderColumn.fieldName}</span>
+                <span className=' font-semibold'>{boardOrderColumn.fieldName}</span>
                 <span>{boardOrderColumn.length}</span>            
               </div>
               <div className='flex justify-between items-center gap-1.5'>
