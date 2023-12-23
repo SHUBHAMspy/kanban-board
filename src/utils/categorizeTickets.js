@@ -103,41 +103,83 @@ export const tickets = [
 ]
 
 // Function to categorize tickets
-export function categorizeTickets(tickets) {
-  const categorized = {
-      byPriority: {},
-      byStatus: {},
-      byUser: {}
-  };
+// export function categorizeTickets(tickets) {
+//   const categorized = {
+//       byPriority: {},
+//       byStatus: {},
+//       byUser: {}
+//   };
 
-  // Categorize by Priority, Status, and User
-  tickets.forEach(ticket => {
-      // By Priority
-      if (!categorized.byPriority[ticket.priority]) {
-          categorized.byPriority[ticket.priority] = [];
+//   // Categorize by Priority, Status, and User
+//   tickets.forEach(ticket => {
+//       // By Priority
+//       if (!categorized.byPriority[ticket.priority]) {
+//           categorized.byPriority[ticket.priority] = [];
+//       }
+//       categorized.byPriority[ticket.priority].push(ticket);
+
+//       // By Status
+//       if (!categorized.byStatus[ticket.status]) {
+//           categorized.byStatus[ticket.status] = [];
+//       }
+//       categorized.byStatus[ticket.status].push(ticket);
+
+//       // By User
+//       if (!categorized.byUser[ticket.userId]) {
+//           categorized.byUser[ticket.userId] = [];
+//       }
+//       categorized.byUser[ticket.userId].push(ticket);
+//   });
+
+//   return categorized;
+// }
+
+// // Example usage
+// const categorizedTickets = categorizeTickets(tickets);
+
+// // Accessing the categorized data
+// console.log('Tickets by Priority:', categorizedTickets.byPriority);
+// console.log('Tickets by Status:', categorizedTickets.byStatus);
+// console.log('Tickets by User:', categorizedTickets.byUser);
+
+// Function to categorize and order the tickets
+function categorizeAndOrderTickets(tickets, category, order) {
+    const categorizedTickets = {};
+  
+    // Categorize tickets based on the specified category (status, user, or priority)
+    tickets.forEach(ticket => {
+      const key = ticket[category];
+      if (!categorizedTickets[key]) {
+        categorizedTickets[key] = [];
       }
-      categorized.byPriority[ticket.priority].push(ticket);
+      categorizedTickets[key].push(ticket);
+    });
+  
+    // Order tickets within each category based on the specified order (priority or title)
+    for (const key in categorizedTickets) {
+      categorizedTickets[key].sort((a, b) => {
+        if (order === 'priority') {
+          return b.priority - a.priority;
+        } else if (order === 'title') {
+          return a.title.localeCompare(b.title);
+        }
+      });
+    }
+  
+    return categorizedTickets;
+  }
+  
+  // Example: Categorize and order tickets based on user and priority
+  const categorizedAndOrderedTickets = categorizeAndOrderTickets(tickets, 'status', 'title');
+  
+  console.log(categorizedAndOrderedTickets);
 
-      // By Status
-      if (!categorized.byStatus[ticket.status]) {
-          categorized.byStatus[ticket.status] = [];
-      }
-      categorized.byStatus[ticket.status].push(ticket);
+	// Define the order in which you want the fields to appear
+	const fieldOrder = ['Backlog', 'Todo', 'In progress', 'Done'];
+	
+	// Arrange the object into a grid in the specified order
+	const arrangedGrid = fieldOrder.map(fieldName => categorizedAndOrderedTickets[fieldName]);
+	
+	console.log(arrangedGrid);
 
-      // By User
-      if (!categorized.byUser[ticket.userId]) {
-          categorized.byUser[ticket.userId] = [];
-      }
-      categorized.byUser[ticket.userId].push(ticket);
-  });
-
-  return categorized;
-}
-
-// Example usage
-const categorizedTickets = categorizeTickets(tickets);
-
-// Accessing the categorized data
-console.log('Tickets by Priority:', categorizedTickets.byPriority);
-console.log('Tickets by Status:', categorizedTickets.byStatus);
-console.log('Tickets by User:', categorizedTickets.byUser);
+  export default categorizeAndOrderTickets

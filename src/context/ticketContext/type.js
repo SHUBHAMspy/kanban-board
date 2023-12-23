@@ -1,0 +1,8 @@
+const SET_GROUPING = 'SET_GROUPING'
+const SET_ORDERING = 'SET_ORDERING'
+
+
+export {
+  SET_GROUPING,
+  SET_ORDERING
+}
