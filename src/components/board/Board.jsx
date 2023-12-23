@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import Card from '../common/card/Card';
 import { EllipsisHorizontalIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { TicketContext } from '../../context/ticketContext/ticketContext';
 
 const Board = ({tickets,users,boardOrder}) => {
   console.log(tickets);
