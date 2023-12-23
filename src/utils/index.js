@@ -1,0 +1,4 @@
+export {
+  getInitials,
+  generateRandomColor
+}
