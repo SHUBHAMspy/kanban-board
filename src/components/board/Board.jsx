@@ -19,7 +19,13 @@ const Board = ({tickets,users,boardOrder}) => {
         : []
         
       ),
-      length: tickets[fieldName.name] ? tickets[fieldName.name].length : 0,
+      length: (
+        display.grouping === 'status' && tickets[fieldName.name] 
+        ? tickets[fieldName.name].length 
+        : display.grouping === 'priority' && tickets[fieldName.id] 
+        ? tickets[fieldName.id].length
+        : 0
+      ),
       icon: fieldName.icon,
       // user: (
       //   display.grouping === 'status' && display.grouping === 'priority'

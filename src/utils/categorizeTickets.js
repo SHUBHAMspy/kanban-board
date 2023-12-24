@@ -187,12 +187,14 @@ function categorizeAndOrderTickets(tickets,users, category, order) {
       ?  categorizedTickets[key].push({
         ...ticket,
         userName: mapUserIdToName(ticket.userId,users),
-        status: mapStatusToIcon(ticket.status)
+        status: mapStatusToIcon(ticket.status),
+        priority: null
       }): category === 'status'
       ? categorizedTickets[key].push({
         ...ticket,
         userName: mapUserIdToName(ticket.userId,users),
-        priority: mapPriorityToIcon(ticket.priority)
+        priority: mapPriorityToIcon(ticket.priority),
+        status: null
       })
       : categorizedTickets[key].push({
         ...ticket,

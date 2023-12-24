@@ -10,11 +10,13 @@ const Card = ({cardData}) => {
         <Avatar name={cardData.userName}/>
       </div>
       <div className='flex items-start gap-[5px]'>
-        {
-          cardData.icon
-          ? icon
-          : null
-        }
+        <div>
+          {
+            cardData.status
+            ? cardData.status
+            : null
+          }
+        </div>
         <p className='text-[#373737] dark:text-[#ebebeb] text-base font-medium leading-5'>
           {cardData.title}
         </p>
@@ -22,7 +24,7 @@ const Card = ({cardData}) => {
       </div>
 
       <div className='flex items-center gap-2 m-1'>
-        {cardData.priority}
+        {cardData.priority ? cardData.priority : null}
         <div className='flex items-center gap-[5px] border-[1px] border-[#e6e7eb] dark:border-[#4a4a4a] rounded-md py-px px-1.5 text-sm text-[#8D8D8D]'>
           <div className='h-3 w-3 rounded-full bg-gray-500'></div>
           <span>{cardData.tag[0]}</span>

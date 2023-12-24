@@ -51,7 +51,7 @@ const Dropdown = ({ options, onSelect,style, context }) => {
                 {
                   componentType === 'Dropdown'
                   ? (
-                    <select id={option}  onChange={handleSelect} className='border-2 py-1 pr-8 pl-2 rounded-md cursor-pointer text-base dark:bg-[#161B22] dark:text-white'>
+                    <select id={option} value={selectedOption} onChange={handleSelect} className='border-2 py-1 pr-8 pl-2 rounded-md cursor-pointer text-base dark:bg-[#161B22] dark:text-white'>
                       {
                         dropdownOptions.map(({label,value}) => (
                           <option value={value}>{label}</option>
