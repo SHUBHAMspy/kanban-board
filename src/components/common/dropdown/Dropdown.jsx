@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
-const Dropdown = ({ options, onSelect,style, context }) => {
+const Dropdown = ({ options, onSelect,style, selected }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 

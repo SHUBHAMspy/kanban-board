@@ -21,7 +21,13 @@ function App() {
   console.log(data);
 
   useEffect(() => {
-    localStorage.setItem('display',JSON.stringify(display))
+    if(!localStorage.getItem('display')){
+      localStorage.setItem('display',JSON.stringify({
+        grouping: 'status',
+        ordering: 'priority'
+      }))
+    } 
+    
   }, [])
   
   

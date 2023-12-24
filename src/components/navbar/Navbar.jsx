@@ -34,7 +34,7 @@ const Navbar = () => {
   return (
     <nav className='flex justify-between items-center h-full'>
       <div>
-        <Dropdown options={options} onSelect={handleDropdownSelect} />
+        <Dropdown options={options} onSelect={handleDropdownSelect} selected={display} />
       </div>
       <div className=" mx-2 p-2 relative space-x-2 flex justify-center items-center rounded-lg">
         <SunIcon className='h-4 w-4'/>
