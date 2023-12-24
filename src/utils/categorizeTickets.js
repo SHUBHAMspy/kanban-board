@@ -55,46 +55,9 @@ function categorizeAndOrderTickets(tickets,users, category, order) {
   }
   
   // Example: Categorize and order tickets based on user and priority
-  const categorizedAndOrderedTickets = categorizeAndOrderTickets(tickets,users, 'priority', 'priority');
+  // const categorizedAndOrderedTickets = categorizeAndOrderTickets(tickets,users, 'priority', 'priority');
   
-  console.log(categorizedAndOrderedTickets);
+  // console.log(categorizedAndOrderedTickets);
 
 
   export default categorizeAndOrderTickets
-
-  // (
-  //   category === 'priority' 
-  //   ? (
-  //     Object.keys(categorizedTickets).map(priority => {
-  //       return categorizedTickets[priority].map(ticket => {
-  //         return {
-  //           ...ticket,
-  //           userName: mapUserIdToName(ticket.userId,users),
-  //           status: mapStatusToIcon(ticket.status)
-  //         };
-  //       });
-  //     })
-  //   ) : category === 'status'
-  //   ? (
-  //     Object.keys(categorizedTickets).map(status => {
-  //       return categorizedTickets[status].map(ticket => {
-  //         return {
-  //           ...ticket,
-  //           userName: mapUserIdToName(ticket.userId,users),
-  //           priority: mapPriorityToIcon(ticket.priority)
-  //         };
-  //       });
-  //     })
-  //   )  
-  //   : (
-  //     Object.keys(categorizedTickets).map(user => {
-  //       return categorizedTickets[user].map(ticket => {
-  //         return {
-  //           ...ticket,
-  //           status: mapStatusToIcon(ticket.status),
-  //           priority: mapPriorityToIcon(ticket.priority)
-  //         };
-  //       });
-  //     })
-  //   )
-  // )
