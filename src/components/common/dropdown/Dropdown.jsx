@@ -3,13 +3,18 @@ import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 const Dropdown = ({ options, onSelect,style, selected }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(selected);
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log(selectedOption);
   const handleSelect = (e) => {
     const {value,id} = e.target
     console.log(value);
-    setSelectedOption(value);
+    const optionField = Object.keys(selectedOption).find((option) => id === option)
+    
+    setSelectedOption((prevSelectedOption) => ({
+      ...prevSelectedOption,
+      [optionField]: value,
+    }));
     setIsOpen(false);
     onSelect(value,id)  
   };
@@ -51,7 +56,7 @@ const Dropdown = ({ options, onSelect,style, selected }) => {
                 {
                   componentType === 'Dropdown'
                   ? (
-                    <select id={option} value={selectedOption} onChange={handleSelect} className='border-2 py-1 pr-8 pl-2 rounded-md cursor-pointer text-base dark:bg-[#161B22] dark:text-white'>
+                    <select id={option} value={selectedOption[option]} onChange={handleSelect} className='border-2 py-1 pr-8 pl-2 rounded-md cursor-pointer text-base dark:bg-[#161B22] dark:text-white'>
                       {
                         dropdownOptions.map(({label,value}) => (
                           <option value={value}>{label}</option>

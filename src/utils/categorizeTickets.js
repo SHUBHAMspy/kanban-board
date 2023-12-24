@@ -39,7 +39,12 @@ function categorizeAndOrderTickets(tickets,users, category, order) {
     for (const key in categorizedTickets) {
       categorizedTickets[key].sort((a, b) => {
         if (order === 'priority') {
-          return b.priority - a.priority;
+          if (b.priority !== a.priority) {
+            return b.priority - a.priority;
+          } else {
+            // If priorities are equal, sort by title ascending
+            return a.title.localeCompare(b.title);
+          }
         } else if (order === 'title') {
           return a.title.localeCompare(b.title);
         }
