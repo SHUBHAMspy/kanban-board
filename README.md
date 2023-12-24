@@ -11,7 +11,7 @@ Link: https://youtu.be/G99etWIGVOY
 Responsive UI: 
   | Laptop View                                   | Tab View                                  |  Mobile View                            |
   | :-----------                                  | :------------:                            |  ------------:                          |
-  | ![Laptop](./public/images/kanban(Laptop).png) | ![Tab](./public/images/kanban(Tablet).png)| ![](./public/images/kanban(mobile).png) |
+  | ![Laptop](./public/images/kanban(Laptop).png) | ![Tab](./public/images/kanban(Tablet).png)| ![](./public/images/kanban(Mobile).png) |
   |                                               |                                           |                                         |
 
 
