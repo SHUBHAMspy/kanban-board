@@ -10,6 +10,8 @@ import { ThemeContext } from './context/themeContext/themeContext'
 import { ThreeCircles } from 'react-loader-spinner'
 import { BoltIcon, CheckCircleIcon, Square3Stack3DIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import { InboxIcon } from '@heroicons/react/24/outline'
+import { priority, status } from './data/data'
+
 
 
 function App() {
@@ -18,10 +20,9 @@ function App() {
   const {data,loading,error} = useFetchData(`${API_BASE_URL}/ticketAndUsers`)
   console.log(data);
   // console.log(tickets,users);
-  // useEffect(() => {
-  //   categorizeAndOrderTickets(tickets,display.grouping,display.ordering)
-  
-  // }, [])
+  useEffect(() => {
+    localStorage.setItem('display',JSON.stringify(display))  
+  }, [])
   
   
   return (
@@ -54,52 +55,10 @@ function App() {
                 users={data.users}
                 boardOrder={
                   display.grouping === 'status'
-                  ? [
-                      {
-                        name:'Backlog',
-                        icon: <Square3Stack3DIcon className='h-4 w-4'/>
-                      },
-                      {
-                        name:'Todo',
-                        icon: <InboxIcon className='h-4 w-4'/>
-                      },
-                      {
-                        name: 'In progress',
-                        icon: <BoltIcon className='h-4 w-4 text-yellow-500 '/>
-                      },
-                      {
-                        name: 'Done',
-                        icon: <CheckCircleIcon className='h-4 w-4 text-green-700'/>
-                      },
-                      {
-                        name:'Cancelled',
-                        icon: <XCircleIcon className='h-4 w-4'/>
-                      }
-                    ]
+                  ? status
                   : display.grouping === 'priority'
-                  ? [
-                    {
-                      name:'No Priority',
-                      icon: <Square3Stack3DIcon className='h-4 w-4'/>
-                    },
-                    {
-                      name:'Low',
-                      icon: <InboxIcon className='h-4 w-4'/>
-                    },
-                    {
-                      name: 'Medium',
-                      icon: <BoltIcon className='h-4 w-4 text-yellow-500 '/>
-                    },
-                    {
-                      name: 'High',
-                      icon: <CheckCircleIcon className='h-4 w-4 text-green-700'/>
-                    },
-                    {
-                      name:'Urgent',
-                      icon: <XCircleIcon className='h-4 w-4'/>
-                    }
-                  ]
-                  : users.map((user) => user.name)
+                  ? priority  
+                  : data.users.map((user) => user.name)
                 }
               />
             )

@@ -1,12 +1,12 @@
 export const options = [
   {
     option: 'Grouping',
-    dropdownOptions: ['Status','User','Priority'],
+    dropdownOptions: [{label:'Status', value: 'status'},{label:'User', value: 'user'},{label:'Priority', value: 'priority'}],
     componentType: "Dropdown",
   },
   {
     option: 'Ordering',
-    dropdownOptions: ['Title','Priority'],
+    dropdownOptions: [{label:'Title', value: 'title'},{label:'Priority', value: 'priority'}],
     componentType: "Dropdown",
   },
 ]

@@ -5,13 +5,13 @@ import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 const Dropdown = ({ options, onSelect,style, context }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  console.log(options);
-  const handleSelect = (option) => {
-    setSelectedOption(option);
+
+  const handleSelect = (e) => {
+    const {value,id} = e.target
+    console.log(value);
+    setSelectedOption(value);
     setIsOpen(false);
-    if(context) onSelect(option,context)
-    else onSelect(option)
-    
+    onSelect(value,id)  
   };
 
   return (
@@ -51,10 +51,10 @@ const Dropdown = ({ options, onSelect,style, context }) => {
                 {
                   componentType === 'Dropdown'
                   ? (
-                    <select value={selectedOption} onChange={handleSelect} className='border-2 py-1 pr-8 pl-2 rounded-md cursor-pointer text-base dark:bg-[#161B22] dark:text-white'>
+                    <select id={option}  onChange={handleSelect} className='border-2 py-1 pr-8 pl-2 rounded-md cursor-pointer text-base dark:bg-[#161B22] dark:text-white'>
                       {
-                        dropdownOptions.map((dropdownOption) => (
-                          <option >{dropdownOption}</option>
+                        dropdownOptions.map(({label,value}) => (
+                          <option value={value}>{label}</option>
                         ))
                       }
                       

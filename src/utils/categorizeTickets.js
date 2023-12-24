@@ -170,7 +170,7 @@ function categorizeAndOrderTickets(tickets, category, order) {
   }
   
   // Example: Categorize and order tickets based on user and priority
-  const categorizedAndOrderedTickets = categorizeAndOrderTickets(tickets, 'status', 'title');
+  const categorizedAndOrderedTickets = categorizeAndOrderTickets(tickets, 'priority', 'title');
   
   console.log(categorizedAndOrderedTickets);
 

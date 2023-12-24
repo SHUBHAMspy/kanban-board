@@ -10,7 +10,14 @@ const Board = ({tickets,users,boardOrder}) => {
   const boardOrderGrid = boardOrder.map(fieldName => (
     {
       fieldName : fieldName.name,
-      ticketList: tickets[fieldName.name],
+      ticketList: (
+        display.grouping === 'status'
+        ? tickets[fieldName.name]
+        : display.grouping === 'priority'
+        ? tickets[fieldName.id]
+        : []
+        
+      ),
       length: tickets[fieldName.name] ? tickets[fieldName.name].length : 0,
       icon: fieldName.icon,
       // user: (

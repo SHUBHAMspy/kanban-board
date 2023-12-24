@@ -7,6 +7,11 @@ const Card = ({cardData}) => {
         <span className='text-[#8D8D8D] text-base'>{cardData.id}</span>
       </div>
       <div className='flex items-start gap-[5px]'>
+        {
+          cardData.icon
+          ? icon
+          : null
+        }
         <p className='text-[#373737] dark:text-[#ebebeb] text-base font-medium leading-5'>
           {cardData.title}
         </p>
