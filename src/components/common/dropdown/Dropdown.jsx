@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+import OutsideClick from '../../../hooks/OutsideClick';
 
 const Dropdown = ({ options, onSelect,style, selected }) => {
   const [selectedOption, setSelectedOption] = useState(selected);
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef()
+  OutsideClick(dropdownRef,setIsOpen)
+
   console.log(selectedOption);
   const handleSelect = (e) => {
     const {value,id} = e.target
@@ -38,7 +42,7 @@ const Dropdown = ({ options, onSelect,style, selected }) => {
         </button>
       </>
       {isOpen && (
-        <div className={`${options.length > 2 ? `overflow-hidden h-40 overflow-y-auto`: `h-max`} origin-top-left  absolute left-0 top-14  w-72 rounded-md border-[1px] border-[#e6e7eb] dark:border-[#4a4a4a] shadow-[0_0_8px_0_rgb(0,0,0,0.1)] dark:shadow-[0_0_8px_0_rgb(255,255,255,0.13)] bg-white ring-1 ring-black ring-opacity-5 z-50 dark:bg-[#161B22] dark:text-white`}>
+        <div ref={dropdownRef} className={`${options.length > 2 ? `overflow-hidden h-40 overflow-y-auto`: `h-max`} origin-top-left  absolute left-0 top-14  w-72 rounded-md border-[1px] border-[#e6e7eb] dark:border-[#4a4a4a] shadow-[0_0_8px_0_rgb(0,0,0,0.1)] dark:shadow-[0_0_8px_0_rgb(255,255,255,0.13)] bg-white ring-1 ring-black ring-opacity-5 z-50 dark:bg-[#161B22] dark:text-white`}>
           <div
             className="py-1 "
             role="menu"
