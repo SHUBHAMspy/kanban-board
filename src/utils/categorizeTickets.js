@@ -18,19 +18,19 @@ function categorizeAndOrderTickets(tickets,users, category, order) {
       ? (categorizedTickets[key].push({
         ...ticket,
         user: mapUserIdToName(ticket.userId,users),
-        status: mapStatusToIcon(ticket.status),
-        priority: null
+        statusIcon: mapStatusToIcon(ticket.status),
+
       })): category === 'status'
       ? (categorizedTickets[key].push({
         ...ticket,
         user: mapUserIdToName(ticket.userId,users),
-        priority: mapPriorityToIcon(ticket.priority),
-        status: null
+        priorityIcon: mapPriorityToIcon(ticket.priority),
+   
       }))
       : categorizedTickets[key].push({
         ...ticket,
-        status: mapStatusToIcon(ticket.status),
-        priority: mapPriorityToIcon(ticket.priority)
+        statusIcon: mapStatusToIcon(ticket.status),
+        priorityIcon: mapPriorityToIcon(ticket.priority)
       })
       
     });
@@ -39,12 +39,12 @@ function categorizeAndOrderTickets(tickets,users, category, order) {
     for (const key in categorizedTickets) {
       categorizedTickets[key].sort((a, b) => {
         if (order === 'priority') {
-          if (b.priority !== a.priority) {
-            return b.priority - a.priority;
-          } else {
-            // If priorities are equal, sort by title ascending
-            return a.title.localeCompare(b.title);
-          }
+          return b.priority - a.priority;
+          // if (b.priority !== a.priority) {
+          // } else {
+          //   // If priorities are equal, sort by title ascending
+          //   return a.title.localeCompare(b.title);
+          // }
         } else if (order === 'title') {
           return a.title.localeCompare(b.title);
         }
@@ -55,9 +55,9 @@ function categorizeAndOrderTickets(tickets,users, category, order) {
   }
   
   // Example: Categorize and order tickets based on user and priority
-  // const categorizedAndOrderedTickets = categorizeAndOrderTickets(tickets, 'priority', 'title');
+  const categorizedAndOrderedTickets = categorizeAndOrderTickets(tickets,users, 'priority', 'priority');
   
-  // console.log(categorizedAndOrderedTickets);
+  console.log(categorizedAndOrderedTickets);
 
 
   export default categorizeAndOrderTickets
