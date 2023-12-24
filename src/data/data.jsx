@@ -1,7 +1,7 @@
 import { InboxIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { BoltIcon, CheckCircleIcon, Square3Stack3DIcon } from "@heroicons/react/24/solid";
 
-const priority = [
+const priorityData = [
   {
     name:'No Priority',
     id: 0,
@@ -29,7 +29,7 @@ const priority = [
   }
 ]
 
-const status = [
+const statusData = [
   {
     name:'Backlog',
     icon: <Square3Stack3DIcon className='h-4 w-4'/>
@@ -53,5 +53,5 @@ const status = [
 ]
 
 export {
-  priority,status
+  priorityData,statusData
 }

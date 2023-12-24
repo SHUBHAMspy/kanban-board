@@ -10,7 +10,7 @@ import { ThemeContext } from './context/themeContext/themeContext'
 import { ThreeCircles } from 'react-loader-spinner'
 import { BoltIcon, CheckCircleIcon, Square3Stack3DIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import { InboxIcon } from '@heroicons/react/24/outline'
-import { priority, status } from './data/data'
+import {priorityData,statusData } from './data/data'
 
 
 
@@ -19,9 +19,9 @@ function App() {
   const {state:{theme}} = useContext(ThemeContext)
   const {data,loading,error} = useFetchData(`${API_BASE_URL}/ticketAndUsers`)
   console.log(data);
-  // console.log(tickets,users);
+
   useEffect(() => {
-    localStorage.setItem('display',JSON.stringify(display))  
+    localStorage.setItem('display',JSON.stringify(display))
   }, [])
   
   
@@ -51,13 +51,13 @@ function App() {
               
             ):(
               <Board 
-                tickets={categorizeAndOrderTickets(data.tickets,display.grouping,display.ordering)}
+                tickets={categorizeAndOrderTickets(data.tickets,data.users,display.grouping,display.ordering)}
                 users={data.users}
                 boardOrder={
                   display.grouping === 'status'
-                  ? status
+                  ? statusData
                   : display.grouping === 'priority'
-                  ? priority  
+                  ? priorityData  
                   : data.users.map((user) => user.name)
                 }
               />

@@ -1,3 +1,6 @@
+import mapUserIdToName from "./mapIdToUsername";
+import mapPriorityToIcon from "./mapPriorityToIcon";
+import mapStatusToIcon from "./mapStatusToIcon";
 
 export const tickets = [
   {
@@ -102,6 +105,34 @@ export const tickets = [
   }
 ]
 
+const users =  [
+  {
+      id: "usr-1",
+      name: "Anoop sharma",
+      available: false
+  },
+  {
+      id: "usr-2",
+      name: "Yogesh",
+      available: true
+  },
+  {
+      id: "usr-3",
+      name: "Shankar Kumar",
+      available: true
+  },
+  {
+      id: "usr-4",
+      name: "Ramesh",
+      available: true
+  },
+  {
+      id: "usr-5",
+      name: "Suresh",
+      available: true
+  }
+]
+
 // Function to categorize tickets
 // export function categorizeTickets(tickets) {
 //   const categorized = {
@@ -143,7 +174,7 @@ export const tickets = [
 // console.log('Tickets by User:', categorizedTickets.byUser);
 
 // Function to categorize and order the tickets
-function categorizeAndOrderTickets(tickets, category, order) {
+function categorizeAndOrderTickets(tickets,users, category, order) {
     const categorizedTickets = {};
   
     // Categorize tickets based on the specified category (status, user, or priority)
@@ -152,7 +183,23 @@ function categorizeAndOrderTickets(tickets, category, order) {
       if (!categorizedTickets[key]) {
         categorizedTickets[key] = [];
       }
-      categorizedTickets[key].push(ticket);
+      category === 'priority'
+      ?  categorizedTickets[key].push({
+        ...ticket,
+        userName: mapUserIdToName(ticket.userId,users),
+        status: mapStatusToIcon(ticket.status)
+      }): category === 'status'
+      ? categorizedTickets[key].push({
+        ...ticket,
+        userName: mapUserIdToName(ticket.userId,users),
+        priority: mapPriorityToIcon(ticket.priority)
+      })
+      : categorizedTickets[key].push({
+        ...ticket,
+        status: mapStatusToIcon(ticket.status),
+        priority: mapPriorityToIcon(ticket.priority)
+      })
+      
     });
   
     // Order tickets within each category based on the specified order (priority or title)
@@ -175,11 +222,48 @@ function categorizeAndOrderTickets(tickets, category, order) {
   console.log(categorizedAndOrderedTickets);
 
 	// Define the order in which you want the fields to appear
-	const fieldOrder = ['Backlog', 'Todo', 'In progress', 'Done'];
+	// const fieldOrder = ['Backlog', 'Todo', 'In progress', 'Done'];
 	
-	// Arrange the object into a grid in the specified order
-	const arrangedGrid = fieldOrder.map(fieldName => categorizedAndOrderedTickets[fieldName]);
+	// // Arrange the object into a grid in the specified order
+	// const arrangedGrid = fieldOrder.map(fieldName => categorizedAndOrderedTickets[fieldName]);
 	
-	console.log(arrangedGrid);
+	// console.log(arrangedGrid);
 
   export default categorizeAndOrderTickets
+
+  // (
+  //   category === 'priority' 
+  //   ? (
+  //     Object.keys(categorizedTickets).map(priority => {
+  //       return categorizedTickets[priority].map(ticket => {
+  //         return {
+  //           ...ticket,
+  //           userName: mapUserIdToName(ticket.userId,users),
+  //           status: mapStatusToIcon(ticket.status)
+  //         };
+  //       });
+  //     })
+  //   ) : category === 'status'
+  //   ? (
+  //     Object.keys(categorizedTickets).map(status => {
+  //       return categorizedTickets[status].map(ticket => {
+  //         return {
+  //           ...ticket,
+  //           userName: mapUserIdToName(ticket.userId,users),
+  //           priority: mapPriorityToIcon(ticket.priority)
+  //         };
+  //       });
+  //     })
+  //   )  
+  //   : (
+  //     Object.keys(categorizedTickets).map(user => {
+  //       return categorizedTickets[user].map(ticket => {
+  //         return {
+  //           ...ticket,
+  //           status: mapStatusToIcon(ticket.status),
+  //           priority: mapPriorityToIcon(ticket.priority)
+  //         };
+  //       });
+  //     })
+  //   )
+  // )

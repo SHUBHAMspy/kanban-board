@@ -5,6 +5,7 @@ import { TicketContext } from '../../context/ticketContext/ticketContext';
 
 const Board = ({tickets,users,boardOrder}) => {
   console.log(tickets);
+  console.log(boardOrder);
   const {state:{display}} = useContext(TicketContext)
   
   const boardOrderGrid = boardOrder.map(fieldName => (
@@ -36,7 +37,7 @@ const Board = ({tickets,users,boardOrder}) => {
             <span>{orderItem}</span>
             
           </div>
-        ))
+        ))  
       } */}
       {
         boardOrderGrid.map((boardOrderColumn) => (

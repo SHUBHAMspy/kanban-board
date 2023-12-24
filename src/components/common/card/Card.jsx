@@ -1,10 +1,13 @@
 import React from 'react'
+import Avatar from '../avatar/Avatar';
 
 const Card = ({cardData}) => {
+  console.log(cardData);
   return (
     <div className='flex flex-col gap-2 rounded-md bg-white dark:bg-[#161B22] border-[1px] border-[#e6e7eb] dark:border-[#4a4a4a] p-4 shadow-[0_0_8px_0_rgb(0,0,0,0.1)] dark:shadow-[0_0_8px_0_rgb(255,255,255,0.13)]'>
       <div className='flex justify-between items-center w-full'>
         <span className='text-[#8D8D8D] text-base'>{cardData.id}</span>
+        <Avatar name={cardData.userName}/>
       </div>
       <div className='flex items-start gap-[5px]'>
         {

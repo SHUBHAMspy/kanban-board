@@ -5,5 +5,5 @@ import getInitials from "./getInitials";
 export {
   getInitials,
   generateRandomColor,
-  categorizeAndOrderTickets
+  categorizeAndOrderTickets,
 }
