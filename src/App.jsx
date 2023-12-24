@@ -58,7 +58,7 @@ function App() {
                   ? statusData
                   : display.grouping === 'priority'
                   ? priorityData  
-                  : data.users.map((user) => user.name)
+                  : data.users
                 }
               />
             )

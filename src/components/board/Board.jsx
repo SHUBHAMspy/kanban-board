@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Card from '../common/card/Card';
 import { EllipsisHorizontalIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { TicketContext } from '../../context/ticketContext/ticketContext';
+import Avatar from '../common/avatar/Avatar';
 
 const Board = ({tickets,users,boardOrder}) => {
   console.log(tickets);
@@ -16,7 +17,7 @@ const Board = ({tickets,users,boardOrder}) => {
         ? tickets[fieldName.name]
         : display.grouping === 'priority'
         ? tickets[fieldName.id]
-        : []
+        : tickets[fieldName.id]
         
       ),
       length: (
@@ -24,9 +25,11 @@ const Board = ({tickets,users,boardOrder}) => {
         ? tickets[fieldName.name].length 
         : display.grouping === 'priority' && tickets[fieldName.id] 
         ? tickets[fieldName.id].length
+        : display.grouping === 'userId' && tickets[fieldName.id] 
+        ? tickets[fieldName.id].length
         : 0
       ),
-      icon: fieldName.icon,
+      icon: fieldName.icon ? fieldName.icon : <Avatar name={fieldName.name} showAvailability={true} isAvailable={fieldName.available}/>,
       // user: (
       //   display.grouping === 'status' && display.grouping === 'priority'
       //   ? users.filter((user) => user.id ===  )
